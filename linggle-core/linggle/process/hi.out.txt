@@ -1,0 +1,4 @@
+Helo(NNP) ,(,) I(PRP) 'm(VBP) tzuchien(NN) .(.)
+This(DT) is(VBZ) my(PRP$) favorite(JJ) T-shirt(NNP) .(.)
+[(XX) Student(XX) ](XX) :(:) Inaudible(JJ)
+[(XX) Students(NNS) speak(VBP) over(IN) one(CD) another(DT) ](-RRB-) Hi(UH) -(:) hi(JJ) .(.)

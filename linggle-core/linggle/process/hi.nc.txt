@@ -1,0 +1,30 @@
+Helo,	1
+I'm	1
+tzuchien.	1
+This	1
+is	1
+my	1
+favorite	1
+T-shirt.	1
+Helo, I'm	1
+I'm tzuchien.	1
+tzuchien. This	1
+This is	1
+is my	1
+my favorite	1
+favorite T-shirt.	1
+Helo, I'm tzuchien.	1
+I'm tzuchien. This	1
+tzuchien. This is	1
+This is my	1
+is my favorite	1
+my favorite T-shirt.	1
+Helo, I'm tzuchien. This	1
+I'm tzuchien. This is	1
+tzuchien. This is my	1
+This is my favorite	1
+is my favorite T-shirt.	1
+Helo, I'm tzuchien. This is	1
+I'm tzuchien. This is my	1
+tzuchien. This is my favorite	1
+This is my favorite T-shirt.	1
