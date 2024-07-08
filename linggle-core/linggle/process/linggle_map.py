@@ -10,6 +10,17 @@ ITEM_RE = re.compile(
 WILDCARDS = (" _ ",)
 
 
+def get_pure_text(ngram):
+    # print(f"ngram: {type(ngram)}")
+    return (
+        token.split("||", 1)[0] if token.rfind("||", 1) else token for token in ngram.split()
+    )
+
+def get_pos(ngram):
+    return (
+        token.split("||", 1)[1][:-2] if token.rfind("||", 1) else token for token in ngram.split()
+    )
+
 def is_wildcard(token):
     return token in WILDCARDS or token.endswith(".")
 
@@ -27,7 +38,9 @@ def to_indice(token):
 
 
 def to_linggle_query(tokens, delim=" "):
-    candidates = [list(to_indice(token)) for token in tokens]
+    ngram_text = list(get_pure_text(tokens))
+    # candidates = [list(to_indice(token)) for token in tokens]
+    candidates = [list(to_indice(token)) for token in ngram_text]
     for query_tokens in product(*candidates):
         # skip queries consisting of wildcards only
         # if not all(is_wildcard(token) for token in query_tokens):
@@ -37,17 +50,23 @@ def to_linggle_query(tokens, delim=" "):
 
 def linggle_map(iterable):
     for line in iterable:
-        # print("line: ", line.strip().split("\t"))
+        # print(f"line: {line}")
         # ngram, npos, count = line.strip().split("\t")
         ngram, count = line.strip().split("\t")
-        tokens = ngram.split()
-        ngram_text = " ".join(
-            token.split("(", 1)[0] if token.rfind("(", 1) else token for token in tokens
-        )
-        for query in to_linggle_query(tokens):
+        # print(f"ngram: {ngram}, count: {count}")
+        ngram_text = " ".join(get_pure_text(ngram))
+        npos = " ".join(get_pos(ngram))
+        # tokens = ngram.split()
+        # print(f"tokens: {tokens}")
+
+        # print(list(token.split("(", 1) if token.rfind("(", 1) else token for token in tokens))
+        # print(f"ngram_text: {ngram_text}, npos: {npos}")
+        # print("=======================================")
+        # for query in to_linggle_query(tokens):
+        for query in to_linggle_query(ngram):
             if query != ngram_text:
-                # yield query, ngram_text, npos, count
-                yield query, ngram_text, count
+                yield query, ngram_text, npos, count
+                # yield query, ngram_text, count
 
 
 if __name__ == "__main__":
@@ -55,3 +74,4 @@ if __name__ == "__main__":
 
     for items in linggle_map(fileinput.input()):
         print(*items, sep="\t")
+        # pass

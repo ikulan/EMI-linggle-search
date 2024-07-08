@@ -17,7 +17,7 @@ if __name__ == "__main__":
     import fileinput
 
     iterable = map(str.strip, fileinput.input())
-    for items in ngramcount_reduce(iterable):
+    for items in ngramcount_reduce(iterable, 3):
         print(*items, sep="\t")
 
 # similar to:
