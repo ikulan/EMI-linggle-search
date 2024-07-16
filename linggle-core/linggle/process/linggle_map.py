@@ -13,13 +13,17 @@ WILDCARDS = (" _ ",)
 def get_pure_text(ngram):
     # print(f"ngram: {type(ngram)}")
     return (
-        token.split("||", 1)[0] if token.rfind("||", 1) else token for token in ngram.split()
+        token.split("||", 1)[0] if token.rfind("||", 1) else token
+        for token in ngram.split()
     )
+
 
 def get_pos(ngram):
     return (
-        token.split("||", 1)[1][:-2] if token.rfind("||", 1) else token for token in ngram.split()
+        token.split("||", 1)[1][:-2] if token.rfind("||", 1) else token
+        for token in ngram.split()
     )
+
 
 def is_wildcard(token):
     return token in WILDCARDS or token.endswith(".")
@@ -73,5 +77,5 @@ if __name__ == "__main__":
     import fileinput
 
     for items in linggle_map(fileinput.input()):
-        print(*items, sep="\t")
-        # pass
+        # print(*items, sep="\t")
+        pass

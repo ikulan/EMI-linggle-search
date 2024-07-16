@@ -18,7 +18,7 @@ def linggle_reduce(iterable, topn=None):
         # print("query: ", query, ", results: ", results)
         counter = Counter()
         # for _, ngram, count in results:
-            # counter[ngram] += count
+        # counter[ngram] += count
         # yield query, counter.most_common(topn)
         for _, ngram, npos, count in results:
             counter[ngram] += count

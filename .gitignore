@@ -2,7 +2,6 @@ env_lg/
 linggle-core/linggle/process/test
 yale-ocw/
 nc-out/
-nc-out-bge/
-nc-out-bge-2/
+nc-vocab-out/
 linggle-nc-out/
-linggle-nc-out-2/
+linggle-core/linggle/database/emiLinggle.db
