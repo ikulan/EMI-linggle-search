@@ -8,7 +8,6 @@ from spacy.util import compile_infix_regex
 from tqdm import tqdm
 
 
-
 def custom_tokenizer(nlp):
     inf = list(nlp.Defaults.infixes)  # Default infixes
     inf.remove(
@@ -39,7 +38,20 @@ def do_pos(iterable):
         if line := line.strip():
             for sent in sent_tokenize(line):
                 if sent := sent.strip():
-                    print(" ".join(f"{token.text}||{token.tag_}||" for token in nlp(sent)))
+                    # print(
+                    #     " ".join(f"{token.text}({token.tag_})" for token in nlp(sent))
+                    # )
+                    tokens = []
+                    for token in nlp(sent):
+                        if token.tag_ == ".":
+                            tokens.append(f"{token.text}(SENT_CLS)")
+                        elif token.tag_ != token.text:
+                            tokens.append(f"{token.text}({token.tag_})")
+                        elif token.tag_ == ",":
+                            tokens.append(f"{token.text}(COMMA)")
+                        elif token.tag_ == ":":
+                            tokens.append(f"{token.text}(COLON)")
+                    print(" ".join(tokens))
             # yield sent
 
 

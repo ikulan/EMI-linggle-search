@@ -7,9 +7,8 @@ db = SqliteDict("emiLinggle.db", tablename="query", autocommit=True)
 
 
 def parse_ngramstr(text):
-    ngram_pos, count = text.rsplit(" ", maxsplit=1)
-    ngram, pos = ngram_pos.rsplit("|||", maxsplit=1)
-    return ngram, pos, int(count)
+    ngram, count = text.rsplit(" ", maxsplit=1)
+    return ngram, int(count)
 
 
 def parse_line(line):
@@ -25,7 +24,7 @@ def load_ngram(lines):
     }
     for key, value in tqdm(linggle_table.items()):
         db[key] = value  # key: query, value: ngram, npos, counts
-        # print(f"key: {key}, value: {value}")
+        # print(f"key: {key},\nvalue: {value}")
         # pass
     return None
 
@@ -33,4 +32,6 @@ def load_ngram(lines):
 if __name__ == "__main__":
     import fileinput
 
+    print("Loading...")
     load_ngram(fileinput.input())
+    print("ready.")
