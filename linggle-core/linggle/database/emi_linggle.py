@@ -10,23 +10,6 @@ from .emi_vocab import VOCABULARY
 from .emi_linggle_command import EmiLinggleCommand
 
 
-# def expand_query(query):
-#     """support for Common symbols in EMI.Linggle search"""
-#     do_expand = EmiLinggleCommand(vocab=VOCABULARY)
-#     queries = do_expand.query(query)
-#     print(f"expand_queries: {queries}")
-# for item in queries:
-#     print(f"{item}")
-# print("======end======")
-# return queries
-
-
-# def extend_query(query):
-#     # TODO:
-#     pass
-#     return [query]
-
-
 def load_database():
     logging.info("Loading...", end="")
     # read emi.linggle data
@@ -45,27 +28,24 @@ def linggle(db):
     if q == "exit()":
         return
 
-    # extend and expand query
-    # queries = [
-    #     simple_query
-    #     for query in extend_query(q)
-    #     for simple_query in expand_query(query)
-    # ]
+    ngramcounts = []
     do_expand = EmiLinggleCommand(vocab=VOCABULARY)
     queries = do_expand.query(q)
-    print(f"expand_queries: {queries}")
+    print(f"(EMI search) expand_queries: {queries}")
 
     # gather results
-    # try:
-    #     ngramcounts = [item for query in queries for item in db[query]]
-    # except KeyError:
-    #     ngramcounts = list()
-
-    ngramcounts = []
     for query in queries:
         try:
-            items = db[query]
-            ngramcounts.extend(items)
+            if len(query.split()) == 1:
+                with open("./linggle/database/emi.vocab.txt", "r") as file:
+                    lines = file.readlines()
+                    for line in lines:
+                        word, count = line.split("\t")
+                        if word == query:
+                            ngramcounts.append((word, int(count)))
+            else:
+                items = db[query]
+                ngramcounts.extend(items)
         except KeyError:
             continue
 
@@ -75,7 +55,7 @@ def linggle(db):
     ngramcounts = nlargest(10, ngramcounts, key=itemgetter(1))
     # print(f"ngramcounts: {ngramcounts}")
     if len(ngramcounts) > 0:
-        print(*(f"{count:>7,}: {ngram}" for ngram, pos, count in ngramcounts), sep="\n")
+        print(*(f"{count:>7,}: {ngram}" for ngram, count in ngramcounts), sep="\n")
     else:
         print(" " * 8, "no results.")
 

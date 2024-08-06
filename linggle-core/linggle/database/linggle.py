@@ -30,20 +30,28 @@ class BaseLinggle(LinggleCommand):
     def __query(self, cmd, topn=50):
         cmds = self.expand_query(cmd)
         ngrams = self._query_many(cmds)
+        print(f"(__query) ngrams: {list(ngrams)}")
         # TODO: use more efficient nlargest function (bottleneck, pandas, ...)
         return Counter(dict(ngrams)).most_common(topn)
 
     def _query_many(self, cmds, query_func=None, **kwargs):
         """accept queries and return list of ngrams with counts"""
+        print(f"(_query_many) cmds: {list(chain(*(self._query(cmd) for cmd in cmds)))}")
         return chain(*(self._query(cmd) for cmd in cmds))
 
     def _query(self, cmd, conditions=()):
         cmd, partial_conditions = convert_partial_cmd(cmd)
         conditions += partial_conditions
         logging.info(f"plain query: {cmd} {str(conditions)}")
+        print(f"(_query) cmd: {cmd}, conditions: {conditions}")
         # if the token length of the query is 1, use `get_unigram` method to speed up
         rows = self.query(cmd) if len(cmd.split()) > 1 else self.get_unigram(cmd)
-        return [(ngram, count) for ngram, count in rows if BaseLinggle.check_condition(ngram, conditions)]
+        print(f"(_query) rows: {rows}")
+        return [
+            (ngram, count)
+            for ngram, count in rows
+            if BaseLinggle.check_condition(ngram, conditions)
+        ]
 
     @staticmethod
     def check_condition(ngram, conditions):
@@ -64,7 +72,7 @@ class DbLinggle(BaseLinggle):
 
     def close(self):
         """clean connection object"""
-        if hasattr(self, 'conn') and not self.conn.closed:
+        if hasattr(self, "conn") and not self.conn.closed:
             self.conn.close()
 
     def __del__(self):
@@ -88,7 +96,7 @@ class NoPosLinggle(BaseLinggle):
     def _query(self, cmd, conditions=()):
         nopos_cmd, pos_conditions = NoPosLinggle.to_nopos_cmd(cmd)
         logging.info(f"Convert to No-PoS query: {cmd} -> {nopos_cmd}:{pos_conditions}")
-        return super()._query(nopos_cmd, conditions=pos_conditions+conditions)
+        return super()._query(nopos_cmd, conditions=pos_conditions + conditions)
 
     @staticmethod
     def to_nopos_cmd(cmd):
@@ -96,6 +104,6 @@ class NoPosLinggle(BaseLinggle):
         conditions = []
         for i, token in enumerate(tokens):
             if is_pos_wildcard(token):
-                tokens[i] = '_'
+                tokens[i] = "_"
                 conditions.append(get_pos_check_func(i, token))
-        return ' '.join(tokens), tuple(conditions)
+        return " ".join(tokens), tuple(conditions)
