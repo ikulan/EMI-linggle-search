@@ -8,7 +8,12 @@ nc-out-test/
 nc-vocab-out-test/
 linggle-nc-out-test/
 linggle-core/flagged/
-linggle-core/linggle/process/__pycache__/
-linggle-core/linggle/database/__pycache__/
+linggle-core/linggle/process/__pycache__/*
+linggle-core/linggle/database/__pycache__/*
+
+
+*.pyc
+*.db
+*.json
 linggle-core/linggle/database/emiLinggle.db
 linggle-core/linggle/database/emiLinggle_test.db
