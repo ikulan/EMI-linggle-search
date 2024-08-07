@@ -15,7 +15,7 @@ def process_query(q):
     ngramcounts = []
     do_expand = EmiLinggleCommand(vocab=VOCABULARY)
     queries = do_expand.query(q)
-    print(f"(EMI search) expand_queries: {queries}\n\n")
+    # print(f"(EMI search) expand_queries: {queries}\n\n")
 
     for query in queries:
         try:

@@ -14,7 +14,10 @@ def load_database():
     logging.info("Loading...", end="")
     # read emi.linggle data
     # TODO:
-    script_dir = os.path.dirname(os.path.abspath(__file__))
+    # script_dir = os.path.dirname(os.path.abspath(__file__))
+    script_dir = (
+        "/home/nlplab/atwolin/EMI-linggle-search/linggle-core/linggle/database/"
+    )
     db_path = os.path.join(script_dir, "emiLinggle.db")
     dbLinggle = SqliteDict(db_path, tablename="query")
     logging.info("ready.")
