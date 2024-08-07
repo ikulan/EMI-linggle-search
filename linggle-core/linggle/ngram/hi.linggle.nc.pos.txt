@@ -1,0 +1,128 @@
+_	Helo NNP COMMA 1	, NNP COMMA 1	I NNP COMMA 1	'm NNP COMMA 1	tzuchien NNP COMMA 1	This NNP COMMA 1	is NNP COMMA 1	my NNP COMMA 1	favorite NNP COMMA 1	T NNP COMMA 1	shirt NNP COMMA 1	Helo, NNP COMMA 1
+_ _	, I COMMA PRP 1
+_ I	, I COMMA PRP 1
+, _	, I COMMA PRP 1
+_	I'm PRP VBP 1
+_ _	'm tzuchien VBP JJ 1
+_ tzuchien	'm tzuchien VBP JJ 1
+'m _	'm tzuchien VBP JJ 1
+_ _	This is DT VBZ 1
+_ is	This is DT VBZ 1
+This _	This is DT VBZ 1
+_ _	is my VBZ PRP$ 1
+_ my	is my VBZ PRP$ 1
+is _	is my VBZ PRP$ 1
+_ _	my favorite PRP$ JJ 1
+_ favorite	my favorite PRP$ JJ 1
+my _	my favorite PRP$ JJ 1
+_ _	favorite T JJ NNP 1
+_ T	favorite T JJ NNP 1
+favorite _	favorite T JJ NNP 1
+_ _	Helo, I NNP COMMA PRP 1
+_ I	Helo, I NNP COMMA PRP 1
+Helo, _	Helo, I NNP COMMA PRP 1
+_ _	, I'm COMMA PRP VBP 1
+_ I'm	, I'm COMMA PRP VBP 1
+, _	, I'm COMMA PRP VBP 1
+_ _	I'm tzuchien PRP VBP JJ 1
+_ tzuchien	I'm tzuchien PRP VBP JJ 1
+I'm _	I'm tzuchien PRP VBP JJ 1
+_ _ _	This is my DT VBZ PRP$ 1
+_ _ my	This is my DT VBZ PRP$ 1
+_ is _	This is my DT VBZ PRP$ 1
+_ is my	This is my DT VBZ PRP$ 1
+This _ _	This is my DT VBZ PRP$ 1
+This _ my	This is my DT VBZ PRP$ 1
+This is _	This is my DT VBZ PRP$ 1
+_ _ _	is my favorite VBZ PRP$ JJ 1
+_ _ favorite	is my favorite VBZ PRP$ JJ 1
+_ my _	is my favorite VBZ PRP$ JJ 1
+_ my favorite	is my favorite VBZ PRP$ JJ 1
+is _ _	is my favorite VBZ PRP$ JJ 1
+is _ favorite	is my favorite VBZ PRP$ JJ 1
+is my _	is my favorite VBZ PRP$ JJ 1
+_ _ _	my favorite T PRP$ JJ NNP 1
+_ _ T	my favorite T PRP$ JJ NNP 1
+_ favorite _	my favorite T PRP$ JJ NNP 1
+_ favorite T	my favorite T PRP$ JJ NNP 1
+my _ _	my favorite T PRP$ JJ NNP 1
+my _ T	my favorite T PRP$ JJ NNP 1
+my favorite _	my favorite T PRP$ JJ NNP 1
+_ _	Helo, I'm NNP COMMA PRP VBP 1
+_ I'm	Helo, I'm NNP COMMA PRP VBP 1
+Helo, _	Helo, I'm NNP COMMA PRP VBP 1
+_ _ _	, I'm tzuchien COMMA PRP VBP JJ 1
+_ _ tzuchien	, I'm tzuchien COMMA PRP VBP JJ 1
+_ I'm _	, I'm tzuchien COMMA PRP VBP JJ 1
+_ I'm tzuchien	, I'm tzuchien COMMA PRP VBP JJ 1
+, _ _	, I'm tzuchien COMMA PRP VBP JJ 1
+, _ tzuchien	, I'm tzuchien COMMA PRP VBP JJ 1
+, I'm _	, I'm tzuchien COMMA PRP VBP JJ 1
+_ _ _ _	This is my favorite DT VBZ PRP$ JJ 1
+_ _ _ favorite	This is my favorite DT VBZ PRP$ JJ 1
+_ _ my _	This is my favorite DT VBZ PRP$ JJ 1
+_ _ my favorite	This is my favorite DT VBZ PRP$ JJ 1
+_ is _ _	This is my favorite DT VBZ PRP$ JJ 1
+_ is _ favorite	This is my favorite DT VBZ PRP$ JJ 1
+_ is my _	This is my favorite DT VBZ PRP$ JJ 1
+_ is my favorite	This is my favorite DT VBZ PRP$ JJ 1
+This _ _ _	This is my favorite DT VBZ PRP$ JJ 1
+This _ _ favorite	This is my favorite DT VBZ PRP$ JJ 1
+This _ my _	This is my favorite DT VBZ PRP$ JJ 1
+This _ my favorite	This is my favorite DT VBZ PRP$ JJ 1
+This is _ _	This is my favorite DT VBZ PRP$ JJ 1
+This is _ favorite	This is my favorite DT VBZ PRP$ JJ 1
+This is my _	This is my favorite DT VBZ PRP$ JJ 1
+_ _ _ _	is my favorite T VBZ PRP$ JJ NNP 1
+_ _ _ T	is my favorite T VBZ PRP$ JJ NNP 1
+_ _ favorite _	is my favorite T VBZ PRP$ JJ NNP 1
+_ _ favorite T	is my favorite T VBZ PRP$ JJ NNP 1
+_ my _ _	is my favorite T VBZ PRP$ JJ NNP 1
+_ my _ T	is my favorite T VBZ PRP$ JJ NNP 1
+_ my favorite _	is my favorite T VBZ PRP$ JJ NNP 1
+_ my favorite T	is my favorite T VBZ PRP$ JJ NNP 1
+is _ _ _	is my favorite T VBZ PRP$ JJ NNP 1
+is _ _ T	is my favorite T VBZ PRP$ JJ NNP 1
+is _ favorite _	is my favorite T VBZ PRP$ JJ NNP 1
+is _ favorite T	is my favorite T VBZ PRP$ JJ NNP 1
+is my _ _	is my favorite T VBZ PRP$ JJ NNP 1
+is my _ T	is my favorite T VBZ PRP$ JJ NNP 1
+is my favorite _	is my favorite T VBZ PRP$ JJ NNP 1
+_ _ _	Helo, I'm tzuchien NNP COMMA PRP VBP JJ 1
+_ _ tzuchien	Helo, I'm tzuchien NNP COMMA PRP VBP JJ 1
+_ I'm _	Helo, I'm tzuchien NNP COMMA PRP VBP JJ 1
+_ I'm tzuchien	Helo, I'm tzuchien NNP COMMA PRP VBP JJ 1
+Helo, _ _	Helo, I'm tzuchien NNP COMMA PRP VBP JJ 1
+Helo, _ tzuchien	Helo, I'm tzuchien NNP COMMA PRP VBP JJ 1
+Helo, I'm _	Helo, I'm tzuchien NNP COMMA PRP VBP JJ 1
+_ _ _ _ _	This is my favorite T DT VBZ PRP$ JJ NNP 1
+_ _ _ _ T	This is my favorite T DT VBZ PRP$ JJ NNP 1
+_ _ _ favorite _	This is my favorite T DT VBZ PRP$ JJ NNP 1
+_ _ _ favorite T	This is my favorite T DT VBZ PRP$ JJ NNP 1
+_ _ my _ _	This is my favorite T DT VBZ PRP$ JJ NNP 1
+_ _ my _ T	This is my favorite T DT VBZ PRP$ JJ NNP 1
+_ _ my favorite _	This is my favorite T DT VBZ PRP$ JJ NNP 1
+_ _ my favorite T	This is my favorite T DT VBZ PRP$ JJ NNP 1
+_ is _ _ _	This is my favorite T DT VBZ PRP$ JJ NNP 1
+_ is _ _ T	This is my favorite T DT VBZ PRP$ JJ NNP 1
+_ is _ favorite _	This is my favorite T DT VBZ PRP$ JJ NNP 1
+_ is _ favorite T	This is my favorite T DT VBZ PRP$ JJ NNP 1
+_ is my _ _	This is my favorite T DT VBZ PRP$ JJ NNP 1
+_ is my _ T	This is my favorite T DT VBZ PRP$ JJ NNP 1
+_ is my favorite _	This is my favorite T DT VBZ PRP$ JJ NNP 1
+_ is my favorite T	This is my favorite T DT VBZ PRP$ JJ NNP 1
+This _ _ _ _	This is my favorite T DT VBZ PRP$ JJ NNP 1
+This _ _ _ T	This is my favorite T DT VBZ PRP$ JJ NNP 1
+This _ _ favorite _	This is my favorite T DT VBZ PRP$ JJ NNP 1
+This _ _ favorite T	This is my favorite T DT VBZ PRP$ JJ NNP 1
+This _ my _ _	This is my favorite T DT VBZ PRP$ JJ NNP 1
+This _ my _ T	This is my favorite T DT VBZ PRP$ JJ NNP 1
+This _ my favorite _	This is my favorite T DT VBZ PRP$ JJ NNP 1
+This _ my favorite T	This is my favorite T DT VBZ PRP$ JJ NNP 1
+This is _ _ _	This is my favorite T DT VBZ PRP$ JJ NNP 1
+This is _ _ T	This is my favorite T DT VBZ PRP$ JJ NNP 1
+This is _ favorite _	This is my favorite T DT VBZ PRP$ JJ NNP 1
+This is _ favorite T	This is my favorite T DT VBZ PRP$ JJ NNP 1
+This is my _ _	This is my favorite T DT VBZ PRP$ JJ NNP 1
+This is my _ T	This is my favorite T DT VBZ PRP$ JJ NNP 1
+This is my favorite _	This is my favorite T DT VBZ PRP$ JJ NNP 1
