@@ -41,7 +41,9 @@ def process_query(q):
 
 
 # Create Gradio interface with custom layout
-with gr.Blocks() as iface:
+with gr.Blocks(
+    theme="finlaymacklon/boxy_violet",
+) as iface:
     gr.Markdown("# EMI.Linggle")
 
     with gr.Accordion("HELP", open=False):
@@ -83,7 +85,8 @@ with gr.Blocks() as iface:
 
 
 if __name__ == "__main__":
-    iface.launch()
+    iface.launch(share=True)
+    # iface2.launch(share=True)
 
 
 # query = "you are res$ing at/in ?an"
