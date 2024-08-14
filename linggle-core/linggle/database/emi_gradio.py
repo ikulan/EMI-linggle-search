@@ -17,14 +17,19 @@ def process_query(q):
     queries = do_expand.query(q)
     # print(f"(EMI search) expand_queries: {queries}\n\n")
 
+    # Gather results
     for query in queries:
         try:
             if len(query.split()) == 1:
-                with open("./linggle/database/emi.vocab.txt", "r") as file:
+                # with open("./linggle/database/emi.vocab.txt", "r") as file:
+                with open(
+                    "/home/nlplab/atwolin/EMI-linggle-search/nc-vocab-out/vocab.merged.txt",
+                    "r",
+                ) as file:
                     lines = file.readlines()
                     for line in lines:
                         word, count = line.split("\t")
-                        if word == query:
+                        if word.startswith(query + "("):
                             ngramcounts.append((word, int(count)))
             else:
                 items = db[query]
@@ -49,35 +54,83 @@ with gr.Blocks(
     with gr.Accordion("HELP", open=False):
         gr.Markdown(
             """
-        ## Common symbols
+        ## **Common symbols**
         > Linggle supports a few symbols while performing search.
 
-        >> ### /: Or
-        >> Any collection of words.
-        >> Example: "receive/accept education"
+        `/` Or \\
+        Any collection of words. \\
+        Example: `receive/accept`
 
-        >> ### $: 0 ~ many characters
-        >> Any length of characters.
-        >> Examples: "what are you $ing"
+        `$` 0 ~ many characters \\
+        Any length of characters. \\
+        Examples: `what are you $ing`
 
-        >> ### _: 1 word
-        >> Any single word.
-        >> Examples: "she is _"
+        `_` 1 word \\
+        Any single word. \\
+        Examples: `she is _`
 
-        >> ### *: 0 ~ many words
-        >> Any number of words.
-        >> Examples: "do you *"
+        `*` 0 ~ many words \\
+        Any number of words. \\
+        Examples: `do you *`
 
-        >> ### ?: Optional
-        >> Return results with/without the word.
-        >> Examples: "discuss ?about the issue"
+        `?` Optional \\
+        Return results with/without the word. \\
+        Examples: `discuss ?about`
+
+         \\
+        ## **Part Of Speech**
+        ADD
+        AFX
+        C
+        CC
+        CD
+        COLON
+        COMMA
+        DT
+        EX
+        FW
+        G
+        HYPH
+        IN
+        JJ
+        JJR
+        JJS
+        LS
+        MD
+        NFP
+        NN
+        NNP
+        NNPS
+        NNS
+        PDT
+        POS
+        PRP
+        PRP$
+        RB
+        RBR
+        RBS
+        RP
+        SENT_CLS
+        SYM
+        TO
+        UH
+        VB
+        VBD
+        VBG
+        VBN
+        VBP
+        VBZ
+        WDT
+        WP
+        WP$
+        WRB
         """
         )
 
-        gr.Markdown("## Part Of Speech")
-
     gr.Markdown("Enter your query to get n-gram counts.")
-    query_input = gr.Textbox(lines=1, placeholder="Input your query here...")
+    query_input = gr.Textbox(
+        lines=1, value="if PRP look at", placeholder="Input your query here..."
+    )
     query_button = gr.Button("Submit")
     query_output = gr.TextArea()
 
@@ -86,7 +139,7 @@ with gr.Blocks(
 
 if __name__ == "__main__":
     iface.launch(share=True)
-    # iface2.launch(share=True)
+    # iface.launch()
 
 
 # query = "you are res$ing at/in ?an"
