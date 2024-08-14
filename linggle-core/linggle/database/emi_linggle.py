@@ -34,17 +34,21 @@ def linggle(db):
     ngramcounts = []
     do_expand = EmiLinggleCommand(vocab=VOCABULARY)
     queries = do_expand.query(q)
-    print(f"(EMI search) expand_queries: {queries}")
+    # print(f"(EMI search) expand_queries: {queries}")
 
-    # gather results
+    # Gather results
     for query in queries:
         try:
             if len(query.split()) == 1:
-                with open("./linggle/database/emi.vocab.txt", "r") as file:
+                # with open("./linggle/database/emi.vocab.txt", "r") as file:
+                with open(
+                    "/home/nlplab/atwolin/EMI-linggle-search/nc-vocab-out/vocab.merged.txt",
+                    "r",
+                ) as file:
                     lines = file.readlines()
                     for line in lines:
                         word, count = line.split("\t")
-                        if word == query:
+                        if word.startswith(query + "("):
                             ngramcounts.append((word, int(count)))
             else:
                 items = db[query]
@@ -54,7 +58,7 @@ def linggle(db):
 
     # print(f"ngramcounts: {type(ngramcounts), ngramcounts}")
 
-    # output 10 most common ngrams
+    # Output 10 most common ngrams
     ngramcounts = nlargest(10, ngramcounts, key=itemgetter(1))
     # print(f"ngramcounts: {ngramcounts}")
     if len(ngramcounts) > 0:

@@ -8,7 +8,7 @@ script_dir = os.path.dirname(os.path.abspath(__file__))
 db_path = os.path.join(script_dir, "emiLinggle.db")
 
 dbLinggle1 = SqliteDict(db_path, tablename="query")
-ngram = "that _ the _"
+ngram = "if we"
 test = dbLinggle1[ngram]
 print(f"key: {ngram}\n")
 pprint(test)
