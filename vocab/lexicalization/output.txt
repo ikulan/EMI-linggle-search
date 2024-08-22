@@ -1,0 +1,3 @@
+Prediction(
+    lexicon="Lexicon: ['醜陋', '可怕的']"
+)
