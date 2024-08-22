@@ -1,18 +1,9 @@
 env_lg/
+__pycache__/
 linggle-core/linggle/process/test
-yale-ocw/
-nc-out/
-nc-vocab-out/
-linggle-nc-out/
-linggle-pure-nc-out/
-nc-out-test/
-nc-vocab-out-test/
-linggle-nc-out-test/
 linggle-core/flagged/
-linggle-core/linggle/process/__pycache__/*
-linggle-core/linggle/database/__pycache__/*
 
-vocab/
+data/
 *.pyc
 *.db
 *.json
