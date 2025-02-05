@@ -3,7 +3,11 @@
 from sqlitedict import SqliteDict
 from tqdm import tqdm
 
-db = SqliteDict("emiLinggle.db", tablename="query", autocommit=True)
+db = SqliteDict(
+    "/home/nlplab/atwolin/EMI-linggle-search/linggle-core/linggle/database/dictionary.db",
+    tablename="query",
+    autocommit=True,
+)
 
 
 def parse_ngramstr(text):

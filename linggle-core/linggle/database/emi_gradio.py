@@ -4,52 +4,18 @@ from operator import itemgetter
 from heapq import nlargest
 import gradio as gr
 from .emi_vocab import VOCABULARY
-from .emi_linggle_command import EmiLinggleCommand
-from .emi_linggle import load_database
+from .emi_command import EmiLinggleCommand
+from .emi import load_database, process_query
 
 # Load the database
 db = load_database()
-
-
-def process_query(q):
-    ngramcounts = []
-    do_expand = EmiLinggleCommand(vocab=VOCABULARY)
-    queries = do_expand.query(q)
-    # print(f"(EMI search) expand_queries: {queries}\n\n")
-
-    # Gather results
-    for query in queries:
-        try:
-            if len(query.split()) == 1:
-                # with open("./linggle/database/emi.vocab.txt", "r") as file:
-                with open(
-                    "/home/nlplab/atwolin/EMI-linggle-search/nc-vocab-out/vocab.merged.txt",
-                    "r",
-                ) as file:
-                    lines = file.readlines()
-                    for line in lines:
-                        word, count = line.split("\t")
-                        if word.startswith(query + "("):
-                            ngramcounts.append((word, int(count)))
-            else:
-                items = db[query]
-                ngramcounts.extend(items)
-        except KeyError:
-            continue
-
-    ngramcounts = nlargest(50, ngramcounts, key=itemgetter(1))
-    if len(ngramcounts) >> 0:
-        result = "\n".join(f"{count:> 7,}: {ngram}" for ngram, count in ngramcounts)
-    else:
-        result = "No results found."
-    return result
 
 
 # Create Gradio interface with custom layout
 with gr.Blocks(
     theme="finlaymacklon/boxy_violet",
 ) as iface:
-    gr.Markdown("# EMI.Linggle")
+    gr.Markdown("# E.M.I.ighty")
 
     with gr.Accordion("HELP", open=False):
         gr.Markdown(

@@ -3,7 +3,10 @@ __pycache__/
 linggle-core/linggle/process/test
 linggle-core/flagged/
 
+
+
 data/
+experiment/
 *.pyc
 *.db
 *.json
