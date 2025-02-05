@@ -1,3 +1,6 @@
+"""
+To create a PostgreSQL table for Yale OCW data and store the data in the table
+"""
 import os
 from pprint import pprint
 
@@ -26,6 +29,9 @@ def store_yale_data(id, course_name, sub_course_name, file_name, content):
 
 
 def process_files(root_dir):
+    """
+    Process all files in the Yale OCW directory and store in the database
+    """
     id = 0
     for course_name in os.listdir(root_dir):
         course_dir = os.path.join(root_dir, course_name)
@@ -60,13 +66,19 @@ def fetch_one_row():
 
 if __name__ == "__main__":
 
+    # Prepare the database
     # create_yale_table(connection, cursor)
 
     # root_dir = "/home/nlplab/atwolin/EMI-linggle-search/yale-ocw"
     # process_files(root_dir)
-    # create_tsvector(connection, cursor, "yale")
+    # create_tsvector(connection, cursor, "yale")  # Create tsvector for full-text search
+
+    # Start searching
     info = "course_name, sub_course_name, file_name"
     search_phrase = "Civil Rights Movement"
-    results = full_text_search(connection, cursor, "yale", info, search_phrase)
+    # results = get_full_text(connection, cursor, "yale", info, search_phrase)
+    results = get_partial_text(connection, cursor, "yale", info, search_phrase)
     for row in results:
         print(row)
+
+    disconnect_from_db(connection, cursor)

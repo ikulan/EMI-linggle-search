@@ -1,5 +1,8 @@
+"""
+This module contains functions to connect to a PostgreSQL database, create a table, insert data, and query data.
+"""
 import psycopg2
-
+import re
 
 def connect_to_db():
     try:
@@ -83,7 +86,7 @@ def create_tsvector(connection, cursor, table_name):
     print("tsvector created successfully in PostgreSQL")
 
 
-def full_text_search(connection, cursor, table_name, info, search_phrase):
+def get_full_text(connection, cursor, table_name, info, search_phrase):
     # search_query = f"""
     # SELECT
     #     {info},
@@ -105,3 +108,45 @@ def full_text_search(connection, cursor, table_name, info, search_phrase):
     cursor.execute(search_query, (f"%{search_phrase}%",))
 
     return cursor.fetchall()
+
+
+def get_context_around_phrase(text, phrase, num_words=7):
+    '''Searches for text, and retrieves `num_words` words either side of the text'''
+    # word = r"\W*([\w]+)"
+    # groups = re.search(r'{}\W*{}{}'.format(word * num_words, phrase, word * num_words), text)
+    partition = text.lower().partition(phrase.lower())
+    # print(f"~~~~~~partition[1]: {partition[1]}~~~~~~")
+    if partition[1] == "":
+        return None
+    start_index = partition[0].__len__()
+    end_index = start_index + phrase.__len__()
+    before = text[:start_index].split()[-num_words:]
+    after = text[end_index:].split()[:num_words]
+    return " ".join(before) + " <b>" + text[start_index:end_index] + "</b> " + " ".join(after)
+
+
+def get_partial_text(connection, cursor, table_name, info, search_phrase, limit=3):
+    """
+    Search for a phrase in the content of the table and return the first `limit` results
+    """
+    search_query = f"""
+    SELECT
+        {info},
+        content
+    FROM {table_name}
+    WHERE content ILIKE %s
+    LIMIT {limit};
+    """
+    cursor.execute(search_query, (f"%{search_phrase}%",))
+    rows = cursor.fetchall()
+    # print(f"Found:\n{rows}\n")
+
+    results = []
+    for row in rows:
+        if row[-1] is None:
+            continue
+        # print(f"Before: {row[-1]}")
+        context = get_context_around_phrase(row[-1], search_phrase)
+        # print(f"After: {context}\n")
+        results.append((row[:-1], context))
+    return results
