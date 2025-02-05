@@ -43,14 +43,15 @@ def do_pos(iterable):
                     # )
                     tokens = []
                     for token in nlp(sent):
+                        text = token.text.lower()
                         if token.tag_ == ".":
-                            tokens.append(f"{token.text}(SENT_CLS)")
+                            tokens.append(f"{text}(SENT_CLS)")
                         elif token.tag_ != token.text:
-                            tokens.append(f"{token.text}({token.tag_})")
+                            tokens.append(f"{text}({token.tag_})")
                         elif token.tag_ == ",":
-                            tokens.append(f"{token.text}(COMMA)")
+                            tokens.append(f"{text}(COMMA)")
                         elif token.tag_ == ":":
-                            tokens.append(f"{token.text}(COLON)")
+                            tokens.append(f"{text}(COLON)")
                     print(" ".join(tokens))
             # yield sent
 

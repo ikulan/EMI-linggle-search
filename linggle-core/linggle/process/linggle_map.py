@@ -42,10 +42,10 @@ def linggle_map(iterable):
         # ngram_text = " ".join(
         #     token.split("(", 1)[0] if token.rfind("(", 1) else token for token in tokens
         # )
-        yield ngram_text, ngram_text, count
-        # for query in to_linggle_query(candidates):
-        #     if query != ngram_text:
-        #         yield query, ngram_text, count
+        # yield ngram_text, ngram_text, count
+        for query in to_linggle_query(candidates):
+            if query != ngram_text:
+                yield query, ngram_text, count
 
 
 if __name__ == "__main__":
