@@ -8,9 +8,46 @@ import dspy
 
 from ..preprocess.preprocess import (
     load_dictionary,
-    get_word_and_sense,
-    load_train_dev_set,
 )
+
+
+# Separate the Cambridge dictionary into training and develop dataset
+def get_train_dev_set(dictionary):
+    tmp_dict = dict(dictionary)
+    cutpoint = len(tmp_dict) // 3
+    ans_dict = {}
+    for word in tmp_dict.keys():
+        ch_def = []
+        for pos in tmp_dict[word]:
+            for big_sense_list in tmp_dict[word][pos]:
+                for big_sense in big_sense_list["big_sense"]:
+                    for sense in big_sense["sense"]:
+                        ch_def.append(sense.pop("ch_def"))
+        ans_dict[word] = ch_def
+
+    trainset = {key: tmp_dict[key] for key in list(tmp_dict.keys())[:cutpoint]}
+    devset = {key: tmp_dict[key] for key in list(tmp_dict.keys())[cutpoint:]}
+
+    with open("./vocab/data/dspy/trainset.json", "w") as f:
+        json.dump(trainset, f)
+    with open("./vocab/data/dspy/devset.json", "w") as f:
+        json.dump(devset, f)
+    with open("./vocab/data/dspy/ans.json", "w") as f:
+        json.dump(ans_dict, f)
+
+
+def load_train_dev_set():
+    trainset = None
+    devset = None
+    ans = None
+    with open("./vocab/data/dspy/trainset.json", "r") as f:
+        trainset = json.load(f)
+    with open("./vocab/data/dspy/devset.json", "r") as f:
+        devset = json.load(f)
+    with open("./vocab/data/dspy/ans.json", "r") as f:
+        ans = json.load(f)
+    return trainset, devset, ans
+
 
 client = OpenAI(api_key="$OPENAI_API_KEY")
 
