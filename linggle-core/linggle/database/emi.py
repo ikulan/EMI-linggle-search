@@ -13,17 +13,10 @@ from .emi_command import EmiLinggleCommand
 # connection = connect_to_db()
 # cursor = connection.cursor()
 
-def load_database():
-    logging.info("Loading...", end="")
+def load_database(db_path):
     # read emi.linggle data
-    # TODO:
-    # script_dir = os.path.dirname(os.path.abspath(__file__))
-    script_dir = (
-        "/home/nlplab/atwolin/EMI-linggle-search/linggle-core/linggle/database/"
-    )
-    db1_path = os.path.join(script_dir, "emi.db")
-    db2_path = os.path.join(script_dir, "dictionary.db")
-    db_yale = SqliteDict(db1_path, tablename="query")
+    logging.info("Loading...", end="")
+    db_yale = SqliteDict(db_path, tablename="query")
     # db_dict = SqliteDict(db2_path, tablename="query")
     db_dict = None
     logging.info("ready.")
@@ -87,10 +80,16 @@ def linggle(linggle_db, dict_db):
 
 
 if __name__ == "__main__":
-    db_yale = load_database()
+    import argparse
+    parser = argparse.ArgumentParser(description="Load Linggle data into SQLite database.")
+    parser.add_argument(
+        "db_path", type=str, help="Path to the SQLite database file."
+    )
+    args = parser.parse_args()
+
+    db_yale, db_dict = load_database(args.db_path)
     if db_yale is None:
-        raise ValueError("Failed to load db_yale")
-    db_yale, db_dict = load_database()
+        raise ValueError(f"Failed to load db: {args.db_path}")
     while linggle(db_yale, db_dict):
         pass
     db_yale.close()

@@ -112,5 +112,5 @@ Once the database is generated, you can test it in the CLI using the following c
 
 ```bash
 cd linggle-core
-python -m linggle.database.emi
+python -m linggle.database.emi <DB_PATH>
 ```
