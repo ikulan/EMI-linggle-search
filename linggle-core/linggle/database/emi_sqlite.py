@@ -3,12 +3,6 @@
 from sqlitedict import SqliteDict
 from tqdm import tqdm
 
-db = SqliteDict(
-    "/home/nlplab/atwolin/EMI-linggle-search/linggle-core/linggle/database/dictionary.db",
-    tablename="query",
-    autocommit=True,
-)
-
 
 def parse_ngramstr(text):
     ngram, count = text.rsplit(" ", maxsplit=1)
@@ -20,22 +14,34 @@ def parse_line(line):
     return query, tuple(map(parse_ngramstr, ngramcounts))
 
 
-def load_ngram(lines):
+def load_ngram(lines, db_path):
     # TODO:
     # read linggle data
-    linggle_table = {
-        query: ngramcounts for query, ngramcounts in map(parse_line, lines)
-    }
-    for key, value in tqdm(linggle_table.items()):
-        db[key] = value  # key: query, value: ngram, npos, counts
-        # print(f"key: {key},\nvalue: {value}")
-        # pass
-    return None
+    print(f"Using database: {db_path}")
+    with SqliteDict(db_path, tablename="query", autocommit=True) as db:
+        linggle_table = {
+            query: ngramcounts for query, ngramcounts in map(parse_line, lines)
+        }
+        for key, value in tqdm(linggle_table.items()):
+            db[key] = value  # key: query, value: ngram, npos, counts
+            # print(f"key: {key},\nvalue: {value}")
+            # pass
+        return None
 
 
 if __name__ == "__main__":
-    import fileinput
+    import argparse
+    import fileinput 
+
+    parser = argparse.ArgumentParser(description="Load Linggle data into SQLite database.")
+    parser.add_argument(
+        "db_path", type=str, help="Path to the SQLite database file."
+    )
+    parser.add_argument(
+        "input_files", nargs="+", help="One or more input files to process."
+    )    
+    args = parser.parse_args()
 
     print("Loading...")
-    load_ngram(fileinput.input())
+    load_ngram(fileinput.input(args.input_files), args.db_path)
     print("ready.")

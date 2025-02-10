@@ -101,11 +101,10 @@ cat <NC_OUT_FOLDER>/* | lmr 1m 2 'python ngramcount_map.py' 'python ngramcount_r
 
 **Step 4 - Load into database**
 
-Before proceeding, ensure you **modify any hard-coded paths in the code** as needed.
-
-Run the following script to load data into the database:
-
-`linggle-core/linggle/database/emi_sqlite.py`
+```bash
+cd linggle-core/linggle/database/
+python emi_sqlite.py <DB_PATH> <LINGGLE_OUT_FOLDER>/*
+```
 
 **Testing on Local CLI**
 
