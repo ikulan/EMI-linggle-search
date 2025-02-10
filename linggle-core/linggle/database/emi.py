@@ -94,4 +94,4 @@ if __name__ == "__main__":
     while linggle(db_yale, db_dict):
         pass
     db_yale.close()
-    db_dict.close()
+    # db_dict.close()
