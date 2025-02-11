@@ -1,0 +1,22 @@
+Linggle search engine
+
+1. Download lmrselect lml > raw > copy website linkwget <link>ls -l  // check permissionschmod +x lmd./lmr  // check whether installing success or not
+2. Usage
+	$ cat <data> | ./lmr <chunk size> <num of reducer> <mapper> <reducer> <output directory>
+	$ ./	lmr <chunk size> <num of jobs> <mapper> <reducer> <output directory> < <data>
+
+	cat bnc.nc.sample.txt | lmr 5m 16 ‘python linggle_map.py’ ‘python linggle_reduce.py’ nc-out01
+
+
+
+
+
+
+
+cat ./test/hi.pos.txt | lmr 1m 2 'python ngramcount_map.py' 'python ngramcount_reduce.py' ./test/hi-nc-out
+
+cat ./test/hi-nc-out/reducer-00 | lmr 1m 2 'python linggle_map.py' 'python linggle_reduce.py' ./test/hi-linggle-out
+
+python pos_v2.py ../../../yale-ocw/merged.txt | lmr 5m 16 'python ngramcount_map.py' 'python ngramcount_reduce.py' ../../../nc-out-bge-2
+
+cat /home/nlplab/atwolin/EMI-linggle-search/nc-out-bge-2/* | lmr 5m 16 'python linggle_map.py' 'python linggle_reduce.py' ../../../linggle-nc-out

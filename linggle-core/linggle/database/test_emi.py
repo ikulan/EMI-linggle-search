@@ -5,7 +5,7 @@ from sqlitedict import SqliteDict
 from pprint import pprint
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
-db_path = os.path.join(script_dir, "emiLinggle.db")
+db_path = os.path.join(script_dir, "emi.db")
 
 dbLinggle1 = SqliteDict(db_path, tablename="query")
 ngram = "if we"

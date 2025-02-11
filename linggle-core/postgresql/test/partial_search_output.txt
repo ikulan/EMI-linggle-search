@@ -1,0 +1,19 @@
+(('african-american-studies',
+  'AFAM-162',
+  'lecture_11.txt'),
+  '1930s forms the backdrop for the modern <b>civil rights movement</b> , that movement that is popularly thought')
+
+
+(('african-american-studies',
+  'AFAM-162',
+  'lecture_12.txt'),
+  'about it, forces a re-periodization of the <b>Civil Rights Movement</b> . I’ll leave that alone there for')
+
+
+(('african-american-studies',
+  'AFAM-162',
+  'lecture_13.txt'),
+  'very critical you start to re-periodize the <b>Civil Rights Movement</b> . The kinds of things that I')
+
+
+PostgreSQL connection is closed

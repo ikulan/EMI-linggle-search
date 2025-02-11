@@ -7,7 +7,7 @@ from sqlitedict import SqliteDict
 import logging
 from .emi_vocab import VOCABULARY
 
-from .emi_linggle_command import EmiLinggleCommand
+from .emi_command import EmiLinggleCommand
 
 
 def load_database():

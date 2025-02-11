@@ -10,7 +10,7 @@ def gen_ngrams(items, max_len=5):
 
 def ngramcount_map(lines):
     for tokens in map(str.split, lines):
-        for ngram in gen_ngrams(tokens, 1):
+        for ngram in gen_ngrams(tokens):
             yield ngram
 
 

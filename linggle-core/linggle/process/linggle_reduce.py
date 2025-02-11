@@ -15,7 +15,7 @@ def parse_line(line):
 def linggle_reduce(iterable, topn=None):
     # group values with the same query
     for query, results in groupby(iterable, key=itemgetter(0)):
-        # print("query: ", query, ", results: ", results)
+        # print("query: ", query, ", results: ", list(results))
         counter = Counter()
         for _, ngram, count in results:
             counter[ngram] += count
