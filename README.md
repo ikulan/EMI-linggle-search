@@ -96,7 +96,7 @@ cat <POS_FILE> | lmr 1m 2 'python ngramcount_map.py' 'python ngramcount_reduce.p
 
 ```bash
 cd linggle-core/linggle/process/
-cat <NC_OUT_FOLDER>/* | lmr 1m 2 'python ngramcount_map.py' 'python ngramcount_reduce.py' <LINGGLE_OUT_FOLDER>
+cat <NC_OUT_FOLDER>/* | lmr 1m 2 'python linggle_map.py' 'python linggle_reduce.py' <LINGGLE_OUT_FOLDER>
 ```
 
 **Step 4 - Load into database**
